@@ -8,7 +8,7 @@ int main()
   string comment;
   char choice;
   KeyType key;
-  BinHeap *H;
+  BinHeap *H = new BinHeap();
   int i, j, n;
 
   bool interact = true;
@@ -20,8 +20,7 @@ int main()
     {
       cout << "Commands:" << endl;
       cout << " (i)nsert, (m)inimum, (e)xtract min," << endl;
-      cout << " (d)ecrease key, (p)rint heap, print as (t)ree, (s)earch,"
-           << endl;
+      cout << " (d)ecrease key, (p)rint heap, print as (t)ree, (s)earch," << endl;
       cout << " (S)orting test" << endl;
       cout << "+/- turns extract print on/off, or # (to comment) " << endl;
       cout << " > ";

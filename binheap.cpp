@@ -98,6 +98,25 @@ void BinHeap::insert(KeyType key)
    decreaseKey(heapSize, key);
 }
 
+void BinHeap::decreaseKey(int i, KeyType key)
+{
+   if (key > A[i])
+   {
+      cout << "\nKey larger than A[i] in decreaseKey()\n\n";
+      return;
+   }
+
+   while(i > 1){
+      int parent = getParent(i);
+      if(A[i] < A[parent]){
+         swap(A[i],A[parent]);
+         i=parent;
+      }else{
+         break;
+      }
+   }
+}
+
 KeyType BinHeap::minimum()
 {
    return A[1]; // Assumes heap is not empty!
@@ -114,24 +133,32 @@ KeyType BinHeap::extractMin()
    }
 
    min = A[1];
+   A[1] = A[heapSize];
+   heapSize--;
+   int i = 1;
 
-   // You write the rest of this - remember this is a _min_ heap
-
+   while(2*i <= heapSize){
+      int rightChild = getRightChild(i);
+      int leftChild = getLeftChild(i);
+      if(rightChild > heapSize || A[leftChild] < A[rightChild]){
+         if(A[i]>A[leftChild]){
+            swap(A[i],A[leftChild]);
+            i = leftChild;
+         }else{
+            break;
+         }
+      }else{
+         if(A[i]>A[rightChild]){
+            swap(A[i],A[rightChild]);
+            i = rightChild;
+         }else{
+            break;
+         }
+      }
+   }
    return min;
 }
 
-void BinHeap::decreaseKey(int i, KeyType key)
-{
-   KeyType temp;
-
-   if (key > A[i])
-   {
-      cout << "\nKey larger than A[i] in decreaseKey()\n\n";
-      return;
-   }
-
-   // You write the rest of this - remember this is a _min_ heap
-}
 
 // Auxiliary operations
 
