@@ -11,7 +11,7 @@ int main()
   BinHeap *H = new BinHeap();
   int i, j, n;
 
-  bool interact = true;
+  bool interact = false;
   bool printExtract = true;
 
   do

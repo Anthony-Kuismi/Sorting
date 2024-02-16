@@ -105,7 +105,8 @@ void BinHeap::decreaseKey(int i, KeyType key)
       cout << "\nKey larger than A[i] in decreaseKey()\n\n";
       return;
    }
-
+   
+   A[i] = key;
    while(i > 1){
       int parent = getParent(i);
       if(A[i] < A[parent]){
